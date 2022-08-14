@@ -1,25 +1,19 @@
-name:
-
-on: [push]
-
+name: Development deployment
+on:
+  push:
+    branches:
+      - develop
+      - main
 jobs:
-  build:
-    name: Build
+  lintAndTest:
+    name: Run Linter & Launch unit tests
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node_version: [17]
-
     steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node_version }}
-        uses: actions/setup-node@v3
-        with:
-          node_version: ${{ matrix.node_version }}
-
-      - name: run CI
-        run: |
-          yarn install
-          yarn lint
-          yarn test
-          yarn build
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run: yarn
+      - name: Lint
+        run: yarn lint
+      - name: Test
+        run: yarn test
