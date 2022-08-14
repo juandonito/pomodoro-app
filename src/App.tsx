@@ -1,11 +1,11 @@
 import React from "react";
+import Header from "./components/Header.component";
 
 function App() {
   return (
-    <div>
-      <header>Header</header>
-      <main>This is my pomodoro app</main>
-    </div>
+    <React.Fragment>
+      <Header />
+    </React.Fragment>
   );
 }
 

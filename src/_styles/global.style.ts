@@ -44,6 +44,13 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+// ===== My style =====
+
+body {
+	font-family: 'Kumbh Sans', sans-serif;
+	background-color: #1E213F;
+}
 `;
 
 export default GlobalStyle;
