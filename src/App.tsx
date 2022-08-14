@@ -1,9 +1,8 @@
 import React from "react";
-import "./App.css";
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <header>Header</header>
       <main>This is my pomodoro app</main>
     </div>
