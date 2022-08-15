@@ -51,6 +51,25 @@ body {
 	font-family: 'Kumbh Sans', sans-serif;
 	background-color: #1E213F;
 }
+
+h1, h3 {
+	color: #D7E0FF;
+}
+
+h1 {
+	font-size: 100px;
+	line-height: 120px;
+	font-weight: 700;
+	letter-spacing: -5px;
+}
+
+h3 {
+	font-size: 16px;
+	line-height: 19px;
+	letter-spacing: 15px;
+
+	text-transform: uppercase;
+}
 `;
 
 export default GlobalStyle;
