@@ -4,21 +4,15 @@ import StyledClock from "./Clock.styled";
 const Clock: FC = () => {
   const [isPaused, setIsPaused] = useState<boolean>(true);
   const [isOver, setIsOver] = useState<boolean>(false);
-  const [timerValues, setTimerValues] = useState<{
-    minutes: number;
-    seconds: number;
-  }>({
-    minutes: 25,
-    seconds: 0,
-  });
+  const [timerValue, setTimerValue] = useState<number>(1500);
   const intervalRef = useRef<NodeJS.Timer>();
 
   useEffect(() => {
-    if (timerValues.minutes === 0 && timerValues.seconds === 0) {
+    if (timerValue === 0) {
       pauseTimer();
       setIsOver(true);
     }
-  }, [timerValues, isOver]);
+  }, [timerValue, isOver]);
 
   useEffect(() => {
     if (isPaused) {
@@ -26,18 +20,8 @@ const Clock: FC = () => {
     }
 
     intervalRef.current = setInterval(() => {
-      setTimerValues((prevTimerValues) => {
-        if (prevTimerValues.seconds === 0) {
-          return {
-            seconds: 59,
-            minutes: prevTimerValues.minutes - 1,
-          };
-        }
-
-        return {
-          seconds: prevTimerValues.seconds - 1,
-          minutes: prevTimerValues.minutes,
-        };
+      setTimerValue((prevTimerValue) => {
+        return prevTimerValue - 1;
       });
     }, 1000);
 
@@ -58,10 +42,7 @@ const Clock: FC = () => {
 
   const resetTimer = () => {
     pauseTimer();
-    setTimerValues({
-      minutes: 25,
-      seconds: 0,
-    });
+    setTimerValue(1500);
     setIsPaused(true);
     setIsOver(false);
   };
@@ -78,8 +59,8 @@ const Clock: FC = () => {
     <StyledClock>
       <div onClick={handleClick}>
         <h1>
-          {padTimerNumbers(timerValues.minutes)}:
-          {padTimerNumbers(timerValues.seconds)}
+          {padTimerNumbers(Math.floor(timerValue / 60))}:
+          {padTimerNumbers(timerValue % 60)}
         </h1>
         <h3>
           {isPaused && !isOver && "play"}
