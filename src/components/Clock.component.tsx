@@ -27,11 +27,12 @@ const Clock: FC = () => {
 
     intervalRef.current = setInterval(() => {
       setTimerValues((prevTimerValues) => {
-        if (prevTimerValues.seconds === 0)
+        if (prevTimerValues.seconds === 0) {
           return {
             seconds: 59,
             minutes: prevTimerValues.minutes - 1,
           };
+        }
 
         return {
           seconds: prevTimerValues.seconds - 1,
@@ -85,6 +86,16 @@ const Clock: FC = () => {
           {!isPaused && !isOver && "pause"}
           {isOver && "restart"}
         </h3>
+        <svg height={366} width={366}>
+          <circle
+            stroke-width="11"
+            stroke="#F87070"
+            fill="transparent"
+            r="165"
+            cx="183"
+            cy="183"
+          />
+        </svg>
       </div>
     </StyledClock>
   );
