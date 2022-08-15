@@ -2,9 +2,11 @@ import React, { FC, useEffect, useRef, useState } from "react";
 import StyledClock from "./Clock.styled";
 
 const Clock: FC = () => {
+  const initialTimerValue = 1500;
+
   const [isPaused, setIsPaused] = useState<boolean>(true);
   const [isOver, setIsOver] = useState<boolean>(false);
-  const [timerValue, setTimerValue] = useState<number>(1500);
+  const [timerValue, setTimerValue] = useState<number>(initialTimerValue);
   const intervalRef = useRef<NodeJS.Timer>();
 
   useEffect(() => {
@@ -42,7 +44,7 @@ const Clock: FC = () => {
 
   const resetTimer = () => {
     pauseTimer();
-    setTimerValue(1500);
+    setTimerValue(initialTimerValue);
     setIsPaused(true);
     setIsOver(false);
   };
@@ -56,7 +58,7 @@ const Clock: FC = () => {
   };
 
   return (
-    <StyledClock>
+    <StyledClock maxTimer={initialTimerValue} timerValue={timerValue}>
       <div onClick={handleClick}>
         <h1>
           {padTimerNumbers(Math.floor(timerValue / 60))}:

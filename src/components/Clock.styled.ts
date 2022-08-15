@@ -1,6 +1,11 @@
 import styled from "styled-components";
 
-const StyledClock = styled.div`
+interface StyledClockProps {
+  maxTimer: number;
+  timerValue: number;
+}
+
+const StyledClock = styled.div<StyledClockProps>`
   height: 410px;
   width: 410px;
   border-radius: 205px;
@@ -35,12 +40,17 @@ const StyledClock = styled.div`
 
     svg {
       position: absolute;
-      stroke-dasharray: 1000 36;
+      stroke-dasharray: ${({ maxTimer, timerValue }) =>
+        ` ${(timerValue * 1036) / maxTimer} ${
+          1036 - (timerValue * 1036) / maxTimer
+        }`};
       stroke-dashoffset: 1036;
       stroke-linecap: round;
 
-      transform: rotate(-91deg);
+      transform: rotate(-90deg);
       transform-origin: 50% 50%;
+
+      transition: stroke-dasharray 1s;
     }
   }
 `;
