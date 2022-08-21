@@ -70,14 +70,7 @@ const Clock: FC = () => {
           {isOver && "restart"}
         </h3>
         <svg height={366} width={366}>
-          <circle
-            stroke-width="11"
-            stroke="#F87070"
-            fill="transparent"
-            r="165"
-            cx="183"
-            cy="183"
-          />
+          <circle r="165" cx="183" cy="183" />
         </svg>
       </div>
     </StyledClock>

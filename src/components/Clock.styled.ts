@@ -46,6 +46,9 @@ const StyledClock = styled.div<StyledClockProps>`
         }`};
       stroke-dashoffset: 1036;
       stroke-linecap: round;
+      stroke: #f87070;
+      stroke-width: 11;
+      fill: transparent;
 
       transform: rotate(-90deg);
       transform-origin: 50% 50%;
