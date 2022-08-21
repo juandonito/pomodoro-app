@@ -1,12 +1,13 @@
 import React from "react";
-import "./App.css";
+import Header from "./components/Header.component";
+import Main from "./components/Main.component";
 
 function App() {
   return (
-    <div className="App">
-      <header>Header</header>
-      <main>This is my pomodoro app</main>
-    </div>
+    <React.Fragment>
+      <Header />
+      <Main />
+    </React.Fragment>
   );
 }
 
