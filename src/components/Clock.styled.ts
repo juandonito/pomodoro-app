@@ -1,6 +1,11 @@
 import styled from "styled-components";
 
-const StyledClock = styled.div`
+interface StyledClockProps {
+  maxTimer: number;
+  timerValue: number;
+}
+
+const StyledClock = styled.div<StyledClockProps>`
   height: 410px;
   width: 410px;
   border-radius: 205px;
@@ -13,6 +18,8 @@ const StyledClock = styled.div`
   box-shadow: -50px -50px 100px #272c5a, 50px 50px 100px #121530;
 
   div {
+    position: relative;
+
     height: 366px;
     width: 366px;
     border-radius: 205px;
@@ -29,6 +36,24 @@ const StyledClock = styled.div`
     h1 {
       text-align: center;
       width: 100%;
+    }
+
+    svg {
+      position: absolute;
+      stroke-dasharray: ${({ maxTimer, timerValue }) =>
+        ` ${(timerValue * 1036) / maxTimer} ${
+          1036 - (timerValue * 1036) / maxTimer
+        }`};
+      stroke-dashoffset: 1036;
+      stroke-linecap: round;
+      stroke: #f87070;
+      stroke-width: 11;
+      fill: transparent;
+
+      transform: rotate(-90deg);
+      transform-origin: 50% 50%;
+
+      transition: stroke-dasharray 1s;
     }
   }
 `;
