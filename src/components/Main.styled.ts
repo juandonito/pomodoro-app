@@ -4,9 +4,9 @@ const StyledMain = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  gap: 48px;
 
-  height: 90vh;
+  height: 100vh;
 `;
 
 export default StyledMain;
