@@ -1,13 +1,28 @@
-import React, { FC, useEffect, useRef, useState } from "react";
+import React, { FC, useEffect, useRef, useState, useCallback } from "react";
 import StyledClock from "./Clock.styled";
 
-const Clock: FC = () => {
-  const initialTimerValue = 1500;
+declare interface ClockProps {
+  time: number;
+}
+
+const Clock: FC<ClockProps> = ({ time }) => {
+  const initialTimerValue = time * 60;
 
   const [isPaused, setIsPaused] = useState<boolean>(true);
   const [isOver, setIsOver] = useState<boolean>(false);
   const [timerValue, setTimerValue] = useState<number>(initialTimerValue);
   const intervalRef = useRef<NodeJS.Timer>();
+
+  const resetTimer = useCallback(() => {
+    pauseTimer();
+    setTimerValue(initialTimerValue);
+    setIsPaused(true);
+    setIsOver(false);
+  }, [initialTimerValue]);
+
+  const pauseTimer = () => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+  };
 
   useEffect(() => {
     if (timerValue === 0) {
@@ -30,9 +45,9 @@ const Clock: FC = () => {
     return () => pauseTimer();
   }, [isPaused]);
 
-  const pauseTimer = () => {
-    if (intervalRef.current) clearInterval(intervalRef.current);
-  };
+  useEffect(() => {
+    resetTimer();
+  }, [resetTimer]);
 
   const handleClick = () => {
     if (isOver) {
@@ -40,13 +55,6 @@ const Clock: FC = () => {
     } else {
       togglePause();
     }
-  };
-
-  const resetTimer = () => {
-    pauseTimer();
-    setTimerValue(initialTimerValue);
-    setIsPaused(true);
-    setIsOver(false);
   };
 
   const togglePause = () => {
