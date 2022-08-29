@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 
 const StyledNavigation = styled.nav`
   height: 63px;
@@ -24,24 +25,28 @@ const StyledNavigation = styled.nav`
     font-size: 14px;
 
     line-height: 17px;
-
-    li {
-      box-sizing: border-box;
-      color: #d7e0ff;
-      height: 48px;
-      padding: 16px 26px;
-      border-radius: 24px;
-
-      &.active {
-        background-color: #f87070;
-        color: #161932;
-      }
-
-      &:not(.active) {
-        opacity: 0.4;
-      }
-    }
   }
 `;
 
-export default StyledNavigation;
+const StyledLink = styled(NavLink)`
+  color: #d7e0ff;
+  height: 48px;
+  padding: 16px 26px;
+  border-radius: 24px;
+
+  &.active {
+    color: #161932;
+    background-color: #f87070;
+  }
+
+  &:not(.active) {
+    opacity: 0.4;
+  }
+`;
+
+const S = {
+  StyledLink,
+  StyledNavigation,
+};
+
+export default S;

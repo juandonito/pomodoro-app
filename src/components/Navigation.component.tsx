@@ -1,15 +1,21 @@
-import React, { FC } from "react";
-import StyledNavigation from "./Navigation.styled";
+import { FC } from "react";
+import S from "./Navigation.styled";
 
 const Navigation: FC = () => {
   return (
-    <StyledNavigation>
+    <S.StyledNavigation>
       <ul>
-        <li className="active">pomodoro</li>
-        <li>short break</li>
-        <li>long break</li>
+        <li>
+          <S.StyledLink to={""}>pomodoro</S.StyledLink>
+        </li>
+        <li>
+          <S.StyledLink to={"shortbreak"}>short break</S.StyledLink>
+        </li>
+        <li>
+          <S.StyledLink to={"longbreak"}>long break</S.StyledLink>
+        </li>
       </ul>
-    </StyledNavigation>
+    </S.StyledNavigation>
   );
 };
 
