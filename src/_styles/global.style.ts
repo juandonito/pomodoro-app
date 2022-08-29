@@ -71,6 +71,11 @@ h3 {
 
 	text-transform: uppercase;
 }
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
 `;
 
 export default GlobalStyle;
