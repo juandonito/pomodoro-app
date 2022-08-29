@@ -20,6 +20,7 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+	box-sizing: border-box;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -69,6 +70,11 @@ h3 {
 	letter-spacing: 15px;
 
 	text-transform: uppercase;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
 }
 `;
 

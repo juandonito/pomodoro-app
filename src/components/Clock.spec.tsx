@@ -1,7 +1,6 @@
-import React from "react";
 import { render } from "@testing-library/react";
-import App from "./App";
+import Clock from "./Clock.component";
 
 test("renders app", () => {
-  render(<App />);
+  render(<Clock time={10} />);
 });
